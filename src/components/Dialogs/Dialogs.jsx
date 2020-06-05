@@ -3,21 +3,47 @@ import s from './Dialogs.module.css';
 import {NavLink} from "react-router-dom";
 
 
+function DialogItem(props) {
+    return(
+        <NavLink to={"/dialogs/"+props.id} className={s.dialog}>{props.name}</NavLink>
+    )
+}
+
+function Message(props) {
+    return  (
+            <div className={s.message}>{props.message}</div>
+        )
+}
+
 function Dialogs(props){
+
+    let dialogsData = [
+        {id: 1, name: "Алексей"},
+        {id: 2, name: "Света"},
+        {id: 3, name: "Игорь"},
+        {id: 4, name: "Саша"},
+        {id: 5, name: "Максим"},
+        {id: 6, name: "Дисней"},
+    ];
+
+    let messagesData = [
+        {id: 1, message: "Hi"},
+        {id: 1, message: "How are you?"},
+        {id: 1, message: "mother fucker :)"},
+    ]
+
+
     return  (
       <div className={s.dialogs}>
           <div className={s.dialogsItems}>
-              <NavLink to="/dialogs/1" className={s.dialog}>Алексей</NavLink>
-              <NavLink to="/dialogs/2" className={s.dialog + ' ' + s.active}>Света</NavLink>
-              <NavLink to="/dialogs/3" className={s.dialog}>Игорь</NavLink>
-              <NavLink to="/dialogs/4" className={s.dialog}>Саша</NavLink>
-              <NavLink to="/dialogs/5" className={s.dialog}>Максим</NavLink>
-              <NavLink to="/dialogs/6" className={s.dialog}>Дисней</NavLink>
+              <DialogItem name={dialogsData[0].name} id={dialogsData[0].id} />
+              <DialogItem name={dialogsData[1].name} id={dialogsData[1].id} />
           </div>
           <div className={s.messages}>
-              <div className={s.message}>Hi</div>
-              <div className={s.message}>How are you?</div>
-              <div className={s.message}>mother fucker :)</div>
+              <Message message={messagesData[0].message} id={messagesData[0].id} />
+              <Message message={messagesData[1].message} id={messagesData[1].id} />
+              <Message message={messagesData[2].message} id={messagesData[2].id} />
+              <Message message={messagesData[2].message} id={messagesData[2].id} />
           </div>
       </div>
     );

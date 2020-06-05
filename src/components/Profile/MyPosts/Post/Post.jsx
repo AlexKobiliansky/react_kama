@@ -8,7 +8,7 @@ function Post(props){
             <img src="https://cdn.iconscout.com/icon/free/png-256/avatar-370-456322.png" alt="alt"/>
             {props.message}
             <div>
-                <span>like</span>
+                <span>like {props.likesCount}</span>
             </div>
 
         </div>
