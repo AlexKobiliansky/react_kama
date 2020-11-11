@@ -1,4 +1,5 @@
 import * as axios from "axios";
+import Users from "../components/Users/Users";
 
 const baseUrl = 'https://social-network.samuraijs.com/api/1.0/'
 
@@ -23,11 +24,28 @@ export const usersAPI = {
     },
 
     getProfile(userId) {
-        return instance.get(`profile/${userId}`);
+        console.warn('Устаревший метод. Надо использовать profileAPI');
+        return profileAPI.getProfile(userId);
     }
 }
 
+export const profileAPI = {
+    getProfile(userId) {
+        return instance.get(`profile/${userId}`);
+    },
 
+    getStatus(userId) {
+      return instance.get(`/profile/status/` + userId)
+    },
+
+    updateStatus(status) {
+        return instance.put(`/profile/status`, {
+            status: status
+        });
+    }
+
+
+}
 
 export const authAPI = {
     me() {
